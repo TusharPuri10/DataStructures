@@ -58,14 +58,6 @@ void postorder_traversal(tree_type *root)
     postorder_traversal(root->right);
     printf("%d,",root->info);
 }
-void delete_node(tree_type* root,int key);
-{
-    if(()&&(root->right == NULL) && (root->left == NULL))
-    {
-        root = NULL
-    }
-
-}
 int main()
 {
     tree_type *root = NULL;
@@ -76,8 +68,8 @@ int main()
         printf("2. inorder_traversal\n");
         printf("3. postorder_traversal\n");
         printf("4. preorder_traversal\n");
-        printf("5. delete\n");
-        printf("6. exit\n");
+        // printf("5. delete\n");
+        printf("5. exit\n");
         int choice;
         scanf("%d", &choice);
         switch (choice)
@@ -104,16 +96,11 @@ int main()
             preorder_traversal(root);
             break;
         case 5:
-        {}
-            int key;
-            scanf("%d", &key);
-            delete_node(root,key);
-        }
-        case 6:
             exit(0);
         default:
             printf("wrong input try again\n");
             break;
         }
     }
+    return 0;
 }
