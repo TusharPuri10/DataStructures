@@ -27,6 +27,12 @@ node* insert(node* head)
     return head;
 }
 
+void mergesort(node* head)
+{
+    if(head == NULL || head->next == NULL)
+        return;
+    for(node* )
+}
 void display(node* head)
 {
     if(head == NULL)
