@@ -53,14 +53,14 @@ void delete(int a[], int size, int* count)
         a[i]=a[i+1];
     --(*count);
 }
-void print(int a[], int* count)
+void print(int a[], int count)
 {
-    if(*count == 0)
+    if(count == 0)
     {
         printf("\nArray is empty\n\n");
         return;
     }
-    for(int i=0; i<(*count); i++)
+    for(int i=0; i<(count); i++)
         printf("%d ",a[i]);
     printf("\n");
 }
@@ -80,9 +80,9 @@ void append(int a[], int size, int* count)
         ++(*count); 
     }
 }
-void search(int a[], int size, int* count)
+void search(int a[], int size, int count)
 {
-    if(*count == 0)
+    if(count == 0)
     {
         printf("\nArray is empty\n\n");
         return;
@@ -90,7 +90,7 @@ void search(int a[], int size, int* count)
     int key,flag=0;;
     printf("Enter the key: ");
     scanf("%d",&key);
-    for(int i=0;i<(*count);i++)
+    for(int i=0;i<(count);i++)
     {
         if(a[i]==key)
         {
@@ -128,13 +128,13 @@ int main()
             delete(a,10,&count);
             break;
         case 3:
-            print(a,&count);
+            print(a,count);
             break;
         case 4:
             append(a,10,&count);
             break;
         case 5:
-            search(a,10,&count);
+            search(a,10,count);
             break;
         case 6:
             exit(0);
