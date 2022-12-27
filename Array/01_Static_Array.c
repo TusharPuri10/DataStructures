@@ -80,7 +80,7 @@ void append(int a[], int size, int* count)
         ++(*count); 
     }
 }
-void search(int a[], int size, int count)
+void search(int a[], int count)
 {
     if(count == 0)
     {
@@ -134,7 +134,7 @@ int main()
             append(a,10,&count);
             break;
         case 5:
-            search(a,10,count);
+            search(a,count);
             break;
         case 6:
             exit(0);
