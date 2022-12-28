@@ -1,2 +1,3 @@
 /termwork
-02_a_Dynamic_Array.c
+# 02_a_Dynamic_Array.c
+# Not getting any idea on how to implement a dynamic array with the help of static array which doubles in size each time dynamic array gets full

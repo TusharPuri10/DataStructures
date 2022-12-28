@@ -2,38 +2,37 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-void insert(int a[], int size, int* count)
+void insert(int* a, int* size, int* count)
 {
-    if((*count)==size) // checking if array is full
+    if((*count)==(*size)) // checking if array is full
     {
-        printf("Array Full\n");
-        return;
+        (*size) = (*size)*2;
+        // int b[(*size)];
+        a = (int*)realloc(a, (*size) * sizeof(int));
     }
-    else{
-        int index,value,i;
-        again:
-        printf("Enter the index where you want to insert: ");
-        scanf("%d",&index);
-        if(index>size-1 || index<0) // checking for index out of bounds
-        {
-            printf("\nindex out of range try again\n\n");
-            goto again;
-        }
-        else if(index>*count) // checking for partially filled array
-        {
-            printf("\nList is only filled till index %d so you cannot insert at index more than %d\n\n",(*count)-1,*count);
-            goto again;
-        }
-        printf("Enter the value: ");
-        scanf("%d",&value);
-        for(i=(*count); i>index; i--)
-            a[i] = a[i-1];
-        a[index]=value;
-        ++(*count);
-        printf("count is %d\n",*count);
+    int index,value,i;
+    again:
+    printf("Enter the index where you want to insert: ");
+    scanf("%d",&index);
+    if(index>(*size)-1 || index<0) // checking for index out of bounds
+    {
+        printf("\nindex out of range try again\n\n");
+        goto again;
     }
+    else if(index>*count) // checking for partially filled array
+    {
+        printf("\nList is only filled till index %d so you cannot insert at index more than %d\n\n",(*count)-1,*count);
+        goto again;
+    }
+    printf("Enter the value: ");
+    scanf("%d",&value);
+    for(i=(*count); i>index; i--)
+        a[i] = a[i-1];
+    a[index]=value;
+    ++(*count);
+    printf("count is %d\n",*count);
 }
-void delete(int a[], int* count)
+void delete(int* a, int* count)
 {
     if(*count == 0)
     {
@@ -53,7 +52,7 @@ void delete(int a[], int* count)
         a[i]=a[i+1];
     --(*count);
 }
-void print(int a[], int count)
+void print(int* a, int count)
 {
     if(count == 0)
     {
@@ -64,23 +63,21 @@ void print(int a[], int count)
         printf("%d ",a[i]);
     printf("\n");
 }
-void append(int a[], int size, int* count)
+void append(int* a, int (*size), int* count)
 {
-    if((*count)==size)
+    if((*count)==(*size)) // checking if array is full
     {
-        printf("\nArray Full\n\n");
-        return;
+        (*size) = (*size)*2;
+        // int b[(*size)];
+        a = (int*)realloc(a, (*size) * sizeof(int));
     }
-    else
-    {
-        int value;
-        printf("Enter the value: ");
-        scanf("%d",&value);
-        a[(*count)]= value; 
-        ++(*count); 
-    }
+    int value;
+    printf("Enter the value: ");
+    scanf("%d",&value);
+    a[(*count)]= value; 
+    ++(*count); 
 }
-void search(int a[], int count)
+void search(int* a, int count)
 {
     if(count == 0)
     {
@@ -104,8 +101,12 @@ void search(int a[], int count)
 }
 int main()
 {
-    printf("\tStatic Array of size 10\n");
-    int a[10];
+    printf("\tDynamic Array by help of static array\n");
+    int size;
+    // int a[10]; malloc ka use karna hi padega and for that why dont we take size from user
+    printf("Enter the size of the array: ");
+    scanf("%d",&size);
+    int* a = (int*)malloc(size*sizeof(int));
     int count = 0;
     while(1)
     {
@@ -122,7 +123,7 @@ int main()
         switch (choice)
         {
         case 1:
-            insert(a,10,&count);
+            insert(a,&size,&count);
             break;
         case 2:
             delete(a,&count);
@@ -131,7 +132,7 @@ int main()
             print(a,count);
             break;
         case 4:
-            append(a,10,&count);
+            append(a,&size,&count);
             break;
         case 5:
             search(a,count);
