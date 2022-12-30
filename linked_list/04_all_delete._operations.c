@@ -128,21 +128,12 @@ int main()
     {
         int choice;
         printf("Options:\n");
-        // printf("2.delete at end\n");
-        // printf("1.delete at begin\n");
-        // printf("1.delete at index\n");
-        
-        // printf("1.delete by value\n");
-        // doubly circular
-        // queue (vishwas)
-
         printf("1.insert at end\n");//imp
         printf("2.display\n");//imp
-        printf("3.exit\n");
-
-        printf("4.delete at end\n");
-        printf("5.delete at begin\n");
-        printf("6.delete at index\n");
+        printf("3.delete by index\n");
+        printf("4.delete from end\n");
+        printf("5.delete from begin\n");
+        printf("6.exit\n");
 
         printf("\nEnter the choice: ");
         scanf("%d",&choice);
@@ -154,8 +145,9 @@ int main()
             case 2:
                 Display(head);
                 break;
-            case 3: exit(0);
-
+            case 3:
+                head = delete_index(head);
+                break;
             case 4:
                 head = delete_end(head);
                 break;
@@ -163,8 +155,7 @@ int main()
                 head = delete_begin(head);
                 break;
             case 6:
-                head = delete_index(head);
-                break;
+                exit(0);
             default:
                 printf("\twrong input\n");
         }

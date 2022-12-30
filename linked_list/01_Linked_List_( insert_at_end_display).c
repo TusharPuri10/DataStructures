@@ -26,13 +26,6 @@ node* insert(node* head)
     }
     return head;
 }
-
-void mergesort(node* head)
-{
-    if(head == NULL || head->next == NULL)
-        return;
-    for(node* )
-}
 void display(node* head)
 {
     if(head == NULL)
@@ -58,22 +51,8 @@ int main()
     {
         int choice;
         printf("Options:\n");
-
-        // printf("1.insert at begin\n"); //done
-        // printf("1.insert at index\n"); // done
-
-        // printf("2.delete at end\n"); // done
-        // printf("1.delete at begin\n");// done
-        // printf("1.delete at index\n");// done
-        
-        // printf("1.delete by value\n");// linear search + linked list faltu apne aap karlena display ka loop lagana temp->next->info == value // value not found
-        // doubly 
-        // circular //yaham tak
-        //____________
-        // queue (vishwas) (ill try)
-
-        printf("1.insert at end\n");//imp
-        printf("2.display\n");//imp
+        printf("1.insert at end\n");
+        printf("2.display\n");
         printf("3.exit\n");
         printf("\nEnter the choice: ");
         scanf("%d",&choice);
